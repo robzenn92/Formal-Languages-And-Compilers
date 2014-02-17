@@ -2,9 +2,31 @@
 
 A \textit{compiler} is a specific software that takes a source program and transform it into executable code. There are 2 different compilation phases:
 \begin{itemize}
-\item \textit{Frontend phase}: takes source code and transform it into intermediate code
-\item \textit{Backend phase}: takes the intermediate code generated before and transform it into machine code (depend of the hardware you have).
+\item \textit{Front-End phase}: takes source code and transform it into intermediate code (indipendent of the hardware you have)
+\item \textit{Back-End phase}: takes the intermediate code generated before and transform it into machine code (depend of the hardware you have).
 \end{itemize}
+
+\section{Frontend}
+
+analisi lessicale produce in output uno stream di tokens in grado di riconoscere ad esempio keyword del linguaggio, identificatori, ecc. come unità atomiche.
+
+analisi sintattica: verifica che siano rispettate le regole della grammatica che definisce il lunguaggio. (nota come parsing)
+costruzione di un albero di derivazione per tenere conto delle precedenze degli operatori.
+
+analisi statica: type checking (semantica statica)
+
+ottimizzazione
+
+generazione del codice intermedio
+
+ultime 2 = semantica dinamica
+
+\section{Backend}
+
+generazione del codice per un hardware specifico
+
+ottimizzazione del codice per un hardware specifico
+
 \\
 For example an (high level) expression like this
 \[
