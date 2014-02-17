@@ -2,37 +2,38 @@
 
 A \textit{compiler} is a specific software that takes a source program and transform it into executable code. There are 2 different compilation phases:
 \begin{itemize}
-\item \textit{Front-End phase}: takes source code and transform it into intermediate code (indipendent of the hardware you have)
-\item \textit{Back-End phase}: takes the intermediate code generated before and transform it into machine code (depend of the hardware you have).
+\item \textit{Front-End} part: takes source code and transform it into intermediate code (indipendent of the hardware you have)
+\item \textit{Back-End} part: takes the intermediate code generated before and transform it into machine code (depend of the hardware you have).
 \end{itemize}
 
-\section{Frontend}
+\section{Front-End}
 
-analisi lessicale produce in output uno stream di tokens in grado di riconoscere ad esempio keyword del linguaggio, identificatori, ecc. come unità atomiche.
+The Front-End part of a compiler is composed by the \textit{lexical analysis} that produce in output a stream of tokens able to recognize for example keyword or identifier as atomic units.
+After the lexical analisys there is the \textit{syntax analysis} that verify the roles of the grammar that define a particular language.
+Then there is the \textit{static analysis} where is it computed the type checking control, and after that there is an \textit{optimization process} and the generation of the \textit{intermediate code}.
 
-analisi sintattica: verifica che siano rispettate le regole della grammatica che definisce il lunguaggio. (nota come parsing)
-costruzione di un albero di derivazione per tenere conto delle precedenze degli operatori.
+% analisi lessicale produce in output uno stream di tokens in grado di riconoscere ad esempio keyword del linguaggio, identificatori, ecc. come unità atomiche.
 
-analisi statica: type checking (semantica statica)
+% analisi sintattica: verifica che siano rispettate le regole della grammatica che definisce il lunguaggio. (nota come parsing)
+% costruzione di un albero di derivazione per tenere conto delle precedenze degli operatori.
 
-ottimizzazione
+% analisi statica: type checking (semantica statica)
 
-generazione del codice intermedio
+% ottimizzazione
 
-ultime 2 = semantica dinamica
+% generazione del codice intermedio
 
-\section{Backend}
+% ultime 2 = semantica dinamica
 
-generazione del codice per un hardware specifico
+\section{Back-End}
 
-ottimizzazione del codice per un hardware specifico
-
-\\
-For example an (high level) expression like this
+The back-End part of a compiler is basically composed by the generation of the code for a particular architecture with an optimization process for the specific hardware.
+\newline
+For example, given an (high level) expression like this:
 \[
-position = initial + rate * 60
+position = initial + rate * 60;
 \]
-
+we obtain an intermediate code common for all architectures and then the machine code optimized for a particular hardware.
 \[ \left.
 \begin{aligned}
 &temp1	:=	intoreal(60);\\
@@ -51,11 +52,6 @@ position = initial + rate * 60
 &MOVF\;R1, id_1;
 \end{aligned}
 \]
-% \text{as}
-% \,
-% \[ \left.
-
-% \]
 
 % Le regular expression sono delle espressioni che permettono di genereare un linguaggio. In particolare sia r una regolar expression definita come segue:
 % \begin{equation}
