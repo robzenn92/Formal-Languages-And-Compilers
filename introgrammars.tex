@@ -20,6 +20,9 @@ A string $\gamma$ immidiately derives from $\mu$ in $\mathcal{G} = (\mathcal{V},
 \end{equation}
 denoted by $\mu \xrightarrow[\mathcal{G}]{}^* \gamma$.
 
+\noindent
+One way to denote a grammar $\mathcal{G}$ is the \textit{Backus-Naur Form} simply called \textit{BNF}.
+
 % inserire esempi di grammatiche...
 
 \section{What is a Language?}
@@ -55,8 +58,55 @@ Example:
 \mathcal{L(G)} = \set{ a^nb^n | n > 0 }
 \end{aligned}
 \]
+Three different derivation trees for the grammar $\mathcal{G}$ could be:
+\begin{center}
+\synttree	[S 	[a]
+				[b]
+			]
+\quad
+\synttree	[S 	[a]
+		    	[S 	[a]
+		       		[b]
+				]
+				[b]
+			]
+\quad
+\synttree	[S 	[a]
+		    	[S 	[a]
+		    		[S 	[a]
+		    			[b]
+		    		]
+		       		[b]
+				]
+				[b]
+			]
+\end{center}
+\noindent
+The only way to read these tree is from the left to the right, so we can recognize the words 'ab', 'aabb', 'aaabbb' of the language $\mathcal{L(G)}$.
 
-% alberi di derivazione, inserire packages per realizzarli
+\noindent
+Exercise: Provide a Grammar $\mathcal{G}$ that can recognize the language $\mathcal{L(G)} = \set{ ww^R | w\text{ is }a^*b^*}$.
+\noindent
+Solution: the language $\mathcal{L(G)}$ generates palindrome words so it can generate 'aa', 'aba', 'abba', 'abaaba', \dots.
+
+\noindent
+Possible solutions are:
+\[
+\begin{aligned}
+\mathcal{G_\text{1}}: &S \rightarrow CD\\
+&C \rightarrow aCa | bCb | \epsilon\\
+&D \rightarrow \epsilon
+\end{aligned}
+\quad
+\begin{aligned}
+\mathcal{G_\text{2}}: &S \rightarrow C\\
+&C \rightarrow aCa | bCb | \epsilon
+\end{aligned}
+\quad
+\begin{aligned}
+\mathcal{G_\text{3}}: &S \rightarrow aSa | bSb | \epsilon\\
+\end{aligned}
+\]
 
 \section{Regular Grammars}
 Tutti i linguaggi regolari possono essere scritti sottoforma di regular expression oppure sottoforma di automi a stati finiti.
