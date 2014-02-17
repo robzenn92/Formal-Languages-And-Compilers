@@ -1,0 +1,76 @@
+\chapter{Introduction to the course}
+
+A \textit{compiler} is a specific software that takes a source program and transform it into executable code. There are 2 different compilation phases:
+\begin{itemize}
+\item \textit{Frontend phase}: takes source code and transform it into intermediate code
+\item \textit{Backend phase}: takes the intermediate code generated before and transform it into machine code (depend of the hardware you have).
+\end{itemize}
+\\
+For example an (high level) expression like this
+\[
+position = initial + rate * 60
+\]
+
+\[ \left.
+\begin{aligned}
+&temp1	:=	intoreal(60);\\
+&temp2	:=	id_3 + temp1;\\
+&temp3	:=	id_2 + temp2;\\
+&id_1	:=	temp3;
+\end{aligned}
+\quad
+\xrightarrow{\textit{optimization}}
+\quad
+\begin{aligned}
+&MOVF\;id_3, R2;\\
+&MULT\;#60.0, R2;\\
+&MOVF\;id_2, R1;\\
+&ADDF\;R2, R1;\\
+&MOVF\;R1, id_1;
+\end{aligned}
+\]
+% \text{as}
+% \,
+% \[ \left.
+
+% \]
+
+% Le regular expression sono delle espressioni che permettono di genereare un linguaggio. In particolare sia r una regolar expression definita come segue:
+% \begin{equation}
+% r = a^*b^*a|b^+abb
+% \end{equation}
+% Nella definizione delle regular expression occorre prestare attenzione ad alcune semplici regole. Siano a,b lettere qualsiasi di un Linguaggio L allora in termini di regular expression:
+
+% \begin{itemize}
+% \item $a^+$ equivale a dire <<una o più ripetizioni di a>>
+% \item $a^*$ equivale a dire <<zero o più ripetizioni di a>>, vale $a^+ = aa^*$
+% \item $a|b$ equivale a dire <<a oppure b>>, in un passo posso prendere una sola a oppure una sola b
+% \item $ab$ equivale alla concatenazione di una a seguita da una b.
+% \end{itemize}
+
+% Di fronte ad una regular expression valgono le seguenti regole di priorità:
+
+% \begin{enumerate}
+% \item $*$ Klenee star operator, priorità assoluta.
+% \item $|$ Pipe
+% \item $.$ Concatenazione
+% \item $($ o $)$ Parentesi
+% \end{enumerate}
+
+% Quindi nel caso della (1.1) si ha:
+
+% \begin{enumerate}
+% \item $a^*$ sempre per prima
+% \item $b^*$ subito dopo $a^*$
+% \item $a$ oppure $b^+$
+% \item $abb$ come concatenzazione finale
+% \end{enumerate}
+
+
+% \subsection{Observation}
+
+% \begin{enumerate}
+% \item Dato un linguaggio $L$, possono esistere diverse grammatiche $G_j$ con $j>0$ tali che $L = L(G_j)$;
+% \item In generale, dato un linguaggio L non esiste nessun algoritmo per dimostrare che $L = L(G)$;
+% \item In molti casi la 2 può essere verificata dimostrando per induzione che $L \subseteq L(G)$ e $L(G) \subseteq L$.
+% \end{enumerate}
