@@ -34,7 +34,8 @@ For example, given an (high level) expression like this:
 position = initial + rate * 60;
 \]
 we obtain an intermediate code common for all architectures and then the machine code optimized for a particular hardware.
-\[ \left.
+\[
+\left.
 \begin{aligned}
 &temp1	:=	intoreal(60);\\
 &temp2	:=	id_3 + temp1;\\
@@ -46,11 +47,12 @@ we obtain an intermediate code common for all architectures and then the machine
 \quad
 \begin{aligned}
 &MOVF\;id_3, R2;\\
-&MULT\;#60.0, R2;\\
+&MULT\;\#60.0, R2;\\
 &MOVF\;id_2, R1;\\
 &ADDF\;R2, R1;\\
 &MOVF\;R1, id_1;
 \end{aligned}
+\right.
 \]
 
 % Le regular expression sono delle espressioni che permettono di genereare un linguaggio. In particolare sia r una regolar expression definita come segue:
