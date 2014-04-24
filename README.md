@@ -1,4 +1,4 @@
 Formal-Languages-And-Compilers
 ==============================
 
-Dispense del corso Formal Languages and Compilers @ UNITN
+Lesson notes of Formal Languages and Compilers course @ UNITN
