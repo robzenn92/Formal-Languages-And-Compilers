@@ -1,19 +1,18 @@
-\documentclass[a4paper]{book}
+\documentclass[a4paper]{report}
 
 \usepackage{graphicx}				% for imgs
-\usepackage[italian]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc} 		% for mac
 \usepackage{braket} 				% for parenthesis
 \usepackage{amsmath}				% for arrows with text above or below
 \usepackage{synttree}				% for syntaxt - tree
 
+\title{Formal Languages and Compilers}
+\author{Zen Roberto}
+
 \begin{document}
 
-\title{Formal Languages and Compilers\\Lecture Notes}
-\author{Zen Roberto}
-\date{\today}
-\maketitle
+\include{title_page}
 
 \include{abstract}
 
@@ -21,6 +20,7 @@
 
 \include{intro}
 \include{introgrammars}
+\include{lexing}
 \include{exams_done}
 
 \end{document}

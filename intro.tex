@@ -3,14 +3,14 @@
 A \textit{compiler} is a specific software that takes a source program and transform it into executable code. There are 2 different compilation phases:
 \begin{itemize}
 \item \textit{Front-End} part: takes source code and transform it into intermediate code (indipendent of the hardware you have)
-\item \textit{Back-End} part: takes the intermediate code generated before and transform it into machine code (depend of the hardware you have).
+\item \textit{Back-End} part: takes the intermediate code generated before and transform it into machine code (it depends of the hardware you have).
 \end{itemize}
 
 \section{Front-End}
 
-The Front-End part of a compiler is composed by the \textit{lexical analysis} that produce in output a stream of tokens able to recognize for example keyword or identifier as atomic units.
+The Front-End part of a compiler is composed by the \textit{lexical analysis}. It produces in output a stream of tokens able to recognize keywords as atomic units, i.e. identifiers.
 After the lexical analisys there is the \textit{syntax analysis} that verify the roles of the grammar that define a particular language.
-Then there is the \textit{static analysis} where is it computed the type checking control, and after that there is an \textit{optimization process} and the generation of the \textit{intermediate code}.
+Then there is the \textit{static analysis} where the type checking control is computed. Finally there is an \textit{optimization process} and the generation of the \textit{intermediate code}.
 
 % analisi lessicale produce in output uno stream di tokens in grado di riconoscere ad esempio keyword del linguaggio, identificatori, ecc. come unità atomiche.
 
@@ -27,7 +27,7 @@ Then there is the \textit{static analysis} where is it computed the type checkin
 
 \section{Back-End}
 
-The back-End part of a compiler is basically composed by the generation of the code for a particular architecture with an optimization process for the specific hardware.
+The back-End part of a compiler is basically composed by the generation of the code for a particular architecture. Also an optimization process for the specific hardware could be done in this part.
 \newline
 For example, given an (high level) expression like this:
 \[
@@ -54,34 +54,3 @@ we obtain an intermediate code common for all architectures and then the machine
 \end{aligned}
 \right.
 \]
-
-% Le regular expression sono delle espressioni che permettono di genereare un linguaggio. In particolare sia r una regolar expression definita come segue:
-% \begin{equation}
-% r = a^*b^*a|b^+abb
-% \end{equation}
-% Nella definizione delle regular expression occorre prestare attenzione ad alcune semplici regole. Siano a,b lettere qualsiasi di un Linguaggio L allora in termini di regular expression:
-
-% \begin{itemize}
-% \item $a^+$ equivale a dire <<una o più ripetizioni di a>>
-% \item $a^*$ equivale a dire <<zero o più ripetizioni di a>>, vale $a^+ = aa^*$
-% \item $a|b$ equivale a dire <<a oppure b>>, in un passo posso prendere una sola a oppure una sola b
-% \item $ab$ equivale alla concatenazione di una a seguita da una b.
-% \end{itemize}
-
-% Di fronte ad una regular expression valgono le seguenti regole di priorità:
-
-% \begin{enumerate}
-% \item $*$ Klenee star operator, priorità assoluta.
-% \item $|$ Pipe
-% \item $.$ Concatenazione
-% \item $($ o $)$ Parentesi
-% \end{enumerate}
-
-% Quindi nel caso della (1.1) si ha:
-
-% \begin{enumerate}
-% \item $a^*$ sempre per prima
-% \item $b^*$ subito dopo $a^*$
-% \item $a$ oppure $b^+$
-% \item $abb$ come concatenzazione finale
-% \end{enumerate}
