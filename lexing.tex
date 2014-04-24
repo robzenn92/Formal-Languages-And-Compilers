@@ -38,7 +38,7 @@ Regular expressions are sequences of characters allow to generate a Language $\m
 r = a^*b^*a|b^+abb
 \end{equation}
 Any regular expression r denotes a language $\mathcal{L}\set{r}$.
-For each a $\in\mathcal{A}$ if r=a then $\mathcal{L}\set{\text{r}}=\set{a}$, if r=$\epsilon$ then $\mathcal{L}\set{r}=\set{\epsilon}$. In a regular expression r we could found:
+For each a $\in\mathcal{A}$ if r=a then $\mathcal{L}\set{\text{r}}=\set{a}$, if r=$\epsilon$ then $\mathcal{L}\set{r}=\set{\epsilon}$. In a regular expression r we could find:
 
 \begin{itemize}
 \item \textit{Alternation} with the pipe symbol. \\ If r=$r_1$|$r_2$ then $\mathcal{L}\set{r} = \mathcal{L}\set{r_1} \cup \mathcal{L}\set{r_2}$.
@@ -55,5 +55,53 @@ For example:
 \begin{equation}
 r = a|b^*c = ((a)|(b^*))c
 \end{equation}
+
+\section{Automata}
+
+Automata are graphs so they consists of states (represented by circles), and transitions (represented by arrows).
+We can distinguish two kinds of automata:
+\begin{itemize}
+\item \textit{NFA} stands for Non Deterministic finite automata.
+\item \textit{DFA} stands for Deterministic finite automata.
+\end{itemize}
+
+\subsection{NFA}
+
+An NFA is a finite state automaton defined as follows:
+\begin{equation}
+(\mathcal{S} , \mathcal{A} , move , s_0 , \mathcal{F})
+\end{equation}
+where:
+\begin{itemize}
+\item $\mathcal{S}$ is the set of states;
+\item $\mathcal{A}$
+\item $move$ is a transition function defined as follows: $\mathcal{S} \times (\mathcal{A}\cup \set{\epsilon} ) \rightarrow 2^s$;
+\item $s_0$ is a particolar state callsed "initial state", $s_0 \in \mathcal{S}$
+\item $\mathcal{F}$ is the set of final states, $\mathcal{F} \subset \mathcal{S}$
+\end{itemize}
+\newline
+An NFA $\mathcal{N}$ accepts a string \textit{w} iff \textit{there exist at least a path} in $\mathcal{N}$ from $s_0$ to $s_j \in \mathcal{F}$ for some $s_j$. The language recognized by $\mathcal{N}$, $\mathcal{L\set{N}}$, is the set of strings accepted by $\mathcal{N}$.
+
+\subsection{DFA}
+
+A DFA has the same definition as an NFA:
+\begin{equation}
+(\mathcal{S} , \mathcal{A} , move , s_0 , \mathcal{F})
+\end{equation}
+
+However, a DFA is a nibcase of an NFA in which there are no $\epsilon-move$.
+For each state $s \in \mathcal{S}$ and for each $a \in \mathcal{A}$ there is \textit{exactly one} edge outgoing s and labelled by "a". In other hand, move function is \textit{total} and it is defined as:
+\begin{equation}
+move: \mathcal{S} \times a \rightarrow \mathcal{S}
+\end{equation}
+
+
+
+
+
+
+
+
+
 
 
