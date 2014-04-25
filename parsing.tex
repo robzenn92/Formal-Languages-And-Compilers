@@ -17,16 +17,14 @@ The point is that both tecniques produces a tree such that: \\ \\
 			]
 \quad
 
-
 \begin{algorithm}[H]
-
 	\KwIn{string \textit{w}, a top-down parsing table for $\mathcal{G}$.}
 	\KwOut{left-most derivation of \textit{w} if \textit{w} $\in \mathcal{L\set{G}}$, error otherwise.}
 	Input buffer: w\$\;
 	Stack: \$ + First symbol\;
 	Let a be the first symbol of w\;
 	Let X be the top of the stack\;
-	\While{X \noteq \$}{
+	\While{X $\neq$ \$}{
 		\uIf{X=a}{
 			pop X\;
 			Let a be the next symbol of w\;
@@ -40,11 +38,12 @@ The point is that both tecniques produces a tree such that: \\ \\
 		}
 	}
 	Let X be the top of the stack\;
+	\vspace{0.2cm}
 	\caption{Algorithm for non-recursive predictive parsing}
 \end{algorithm}
 
 \begin{table}[ht]
-	\caption{Predictive parsing table for expressions}
+	\renewcommand*\arraystretch{1.5}
 	\centering
 	\begin{tabular}{|l | c | c | c | c | c | c|}
 		\hline
@@ -56,6 +55,125 @@ The point is that both tecniques produces a tree such that: \\ \\
 		F' 	& F $\rightarrow$ id & & & F $\rightarrow$ (E) & & \\ \hline
 	\end{tabular}
 	\label{table:expressionstable} % is used to refer this table in the text
+	\vspace{0.2cm}
+	\caption{Predictive parsing table for expressions}
 \end{table}
 
+\begin{table}[ht]
+	\renewcommand*\arraystretch{1.5}
+	\centering
+	\begin{tabular}{|l | r | l |}
+		\hline
+		Stack & Input & Output \\ \hline
+		\$E & id+id$\times$id\$ & E $\rightarrow$ TE' \\ \hline
+		\$E'T & id+id$\times$id\$ & T $\rightarrow$ FT' \\ \hline
+		\$E'T'F & id+id$\times$id\$ & F $\rightarrow$ id \\ \hline
+		\$E'T'id &  &  \\ \hline
+		\$E'T' & +id$\times$id\$ & T' $\rightarrow \espilon$ \\ \hline
+		\$E'T+ & +id$\times$id\$ & E' $\rightarrow$+TE' \\ \hline
+	\end{tabular}
+	\label{table:expressionsstacktable} % is used to refer this table in the text
+	\vspace{0.2cm}
+	\caption{Stack trace for expressions}
+\end{table}
+
+Reading the table below from the top to the bottom the output is displayed above.
+
+\begin{center}
+\synttree	[E 	
+				[T 	
+					[F
+						[id]
+					]
+		       		[T'
+		       			[$\epsilon$]
+		       		]
+				]
+				[E'
+					[+]
+					[T
+						[F
+							[id]
+						]
+						[T'
+							[$\times$]
+							[F
+								[id]
+							]
+							[T'
+								[$\epsilon$]
+							]
+						]
+					]
+					[E'
+						[$\epsilon$]
+					]
+				]
+			]
+\quad
+\end{center}
+
+Given grammar:
+&S $\rightarrow$ CD\\
+&C $\rightarrow$ aCa | bCb | $\epsilon$\\
+&D $\rightarrow \epsilon$\\
+\begin{table}[ht]
+	\renewcommand*\arraystretch{1.5}
+	\centering
+	\begin{tabular}{|l | l | l |}
+		\hline
+		Symbol & First & Follow \\ \hline
+		E 	& ( id & \$ ) \\ \hline
+		E' 	& + $\epsilon$ & \$ )  \\ \hline
+		T 	& ( id & \$ ) + \\ \hline
+		T' 	& $\times$ $\epsilon$ & \$ ) + \\ \hline
+		F 	& ( id & \$ ) + $\times$ \\ \hline
+	\end{tabular}
+	\label{table:firstfollowexprtable} % is used to refer this table in the text
+	\vspace{0.2cm}
+	\caption{First and Follow for expressions}
+\end{table}
+
+\begin{algorithm}[H]
+	\KwIn{Grammar $\mathcal{G}$.}
+	\KwOut{Predictive top-down parsing table for $\mathcal{G}$ if $\mathcal{G}$ can be parsed top-down predictively.}
+	\ForEach{A $\rightarrow \alpha \in \mathcal{P}$}{
+		\ForEach{b $\in$ First($\alpha$)}{
+			add A $\rightarrow \alpha$ to M[A,b]\;
+		}
+		\If{$\epsilon \in$ First($\alpha$)}{
+			add A $\rightarrow \alpha$ to M[A,x] where x $\in$ Follow(A)\;
+		}
+	}
+	Set to error() all the empty entries\;
+	\vspace{0.2cm}
+	\caption{Algorithm that makes a predictive top-down parsing table}
+\end{algorithm}
+\vspace{0.2cm}
+If there are no multiple defined entries in the predictive top-down parsing table then the given grammar is LL(1).
+\vspace{0.2cm}
+Example: E $\rightarrow$ E + E | E $\times$ E | id \\
+
+\begin{table}
+\renewcommand*\arraystretch{1.5}
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+ & First & Follow \\ \hline
+ E & id & \$ + $\times$ \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+	\renewcommand*\arraystretch{1.5}
+	\centering
+	\begin{tabular}{|l | c | l | l | l |}
+		\hline
+		 & id & + & $\times$ & \$ \\ \hline
+		E & \begin{tabular}{l} E $\rightarrow$ E + E \\ E $\rightarrow$ E $\times$ E \\ E $\rightarrow$ id \end{tabular} & & & \\ \hline
+	\end{tabular}
+	\label{table:parsingtableexpressions} % is used to refer this table in the text
+	\vspace{0.2cm}
+	\caption{Predictive parsing table for expressions}
+\end{table}
 
