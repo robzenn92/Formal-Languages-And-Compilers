@@ -1,7 +1,7 @@
 Formal-Languages-And-Compilers
 ==============================
 
-Lesson notes of Formal Languages and Compilers course @ UNITN
+Lesson notes taken from Formal Languages and Compilers course @ UNITN
 
 Syllabus
 --------
